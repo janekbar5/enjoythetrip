@@ -18,12 +18,11 @@ class ObjectsTableSeeder extends Seeder
     {
         /* Lecture 10 */
         $faker = Faker\Factory::create();
-
         /* Lecture 10 */
         for ($i = 1; $i <= 10; $i++)
         {
 
-            DB::table('objects')->insert([
+            DB::table('tourist_objects')->insert([
                 
                 'name' => $faker->unique()->word,
                 'description' => $faker->text(1000),
