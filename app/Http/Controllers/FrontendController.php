@@ -34,8 +34,10 @@ class FrontendController extends Controller
     }
     
     /* Lecture 6 */
-    public function object()
+    public function object($id)
     {
+        $objects = $this->fR->getObject($id); /* Lecture 12 */
+        dd($objects);
         return view('frontend.object');
     }
     
