@@ -7,8 +7,10 @@
 
 namespace App\Enjoythetrip\Repositories; /* Lecture 12 */
 
-use App\TouristObject; /* Lecture 12 */
+
 use App\Enjoythetrip\Interfaces\FrontendRepositoryInterface;  /* Lecture 13 */
+use App\{TouristObject,City/*Lecture 17*/}; /* Lecture 12 */
+
 
 /* Lecture 12 */
 class FrontendRepository implements FrontendRepositoryInterface  {   /* Lecture 13 implements FrontendRepositoryInterface */
@@ -20,9 +22,13 @@ class FrontendRepository implements FrontendRepositoryInterface  {   /* Lecture 
         return TouristObject::with('city','photos')->Ordered()->paginate(8);
     } 
      public function getObject($id){
-         return TouristObject::find($id);
+         return TouristObject::with(['city','photos','address','users.photos','comments.user','articles.user','rooms.object.city'])->find($id);
      }
   
+     public function getSearchCities( string $term)
+    {
+        return  City::where('name', 'LIKE', $term . '%')->get();               
+    } 
 }
 
 
