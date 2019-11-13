@@ -91,7 +91,8 @@ THE SOFTWARE.-->
                 <h1>Enjoy the trip!</h1>
                 <p>A platform for tourists and owners of tourist facilities. Find the original place for the holidays!</p>
                 <p>Place your home on the site and let yourself be found by many tourists!</p>
-                <form action="./?view=roomsearch" class="form-inline">
+                <form method="POST" action="{{ route('roomSearch') }}" class="form-inline">
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <label class="sr-only" for="city">City</label>
                         <input name="city" type="text" class="form-control autocomplete" id="city" placeholder="City">

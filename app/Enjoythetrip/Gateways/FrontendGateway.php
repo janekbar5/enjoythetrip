@@ -30,6 +30,22 @@ class FrontendGateway {
         }
         return $results;
     } 
+    
+    public function getSearchResults($request)
+    {
+
+        if( $request->input('city') != null)        {
+            $result = $this->fR->getSearchResults($request->input('city'));
+            if($result)
+            {
+                // to do: filter results based on check in and check out etc.
+                $request->flash(); // inputs for session for one request
+                return $result; // filtered result
+            }
+        }        
+        return false;
+
+    }
 
 }
 

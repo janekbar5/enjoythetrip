@@ -4,7 +4,16 @@
 @section('content')
 <div class="container-fluid places">
 
-    <p class="text-center red bolded">No offers were found that met the criteria</p>
+    
+    
+    <!-- Lecture 18 -->
+    @if (session('norooms'))
+    <p class="text-center red bolded">
+        {{ session('norooms') }}
+    </p>
+    @endif
+    
+    
     <h1 class="text-center">Interesting places</h1>
 
     @foreach($objects->chunk(4) as $chunked_object) <!-- Lecture 14 -->

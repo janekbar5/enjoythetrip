@@ -12,7 +12,7 @@
 */
 Route::get('/','FrontendController@index')->name('home'); /* Lecture 6 */
 Route::get(trans('routes.object').'/{id}','FrontendController@object')->name('object'); /* Lecture 5 */
-Route::get(trans('routes.roomsearch'),'FrontendController@roomsearch')->name('roomSearch'); /* Lecture 5 */
+Route::post(trans('routes.roomsearch'),'FrontendController@roomsearch')->name('roomSearch'); /* Lecture 5 */
 Route::get(trans('routes.room'),'FrontendController@room')->name('room'); /* Lecture 6 */
 Route::get(trans('routes.article'),'FrontendController@article')->name('article'); /* Lecture 6 */
 Route::get(trans('routes.person'),'FrontendController@person')->name('person'); /* Lecture 6 */
