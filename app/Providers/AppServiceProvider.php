@@ -8,8 +8,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\View; /* Lecture 16 */
-
+use Illuminate\Support\Facades\View; 
+use Illuminate\Support\Facades\Blade; 
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,8 +21,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('frontend.*', function ($view) {
-            $view->with('placeholder', asset('images/placeholder.jpg'));
+            //$view->with('placeholder', asset('images/placeholder.jpg'));
+            $view->with('placeholder', 'https://via.placeholder.com/150');  
             });
+
+         
     }
 
     /**

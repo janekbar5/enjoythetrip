@@ -15,12 +15,14 @@
                 <div class="col-md-3 col-sm-6">
 
                     <div class="thumbnail">
-                        <img class="img-responsive img-circle" src="{{ $room->photos->first()->path ?? $placeholder /* Lecture 19 */ }}" alt="...">
+                        <img class="img-responsive img-circle" src="{{ $room->photos->first()->path ?? App\Helpers\Helper::getPlaceholder(150)  }}" alt="...">
+                                             
                         <div class="caption">
-                            <h3>Nr {{ $room->room_number /* Lecture 19 */ }} <small class="orange bolded">{{ $room->price /* Lecture 19 */ }}$</small> </h3>
-                            <p>{{ str_limit($room->description,80) /* Lecture 19 */ }}</p>
+                         
+                            <h3>Nr {{ $room->room_number  }} <small class="orange bolded">{{ $room->price }}$</small> </h3>
+                            <p>{{ str_limit($room->description,80)  }}</p>
                             <p>Size: {{ $room->room_size }}</p>
-                            <p><a href="{{ route('room',['id'=>$room->id]/* Lecture 19 */) }}" class="btn btn-primary" role="button">Details</a><a href="{{ route('room',['id'=>$room->id]/* Lecture 19 */) }}#reservation" class="btn btn-success pull-right" role="button">Reservation</a></p>
+                            <p><a href="{{ route('room',['id'=>$room->id]) }}" class="btn btn-primary" role="button">Details</a><a href="{{ route('room',['id'=>$room->id]) }}#reservation" class="btn btn-success pull-right" role="button">Reservation</a></p>
                         </div>
                     </div>
                 </div>
