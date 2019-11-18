@@ -93,32 +93,40 @@ THE SOFTWARE.-->
                 <p>Place your home on the site and let yourself be found by many tourists!</p>
                 <form method="POST" action="{{ route('roomSearch') }}" class="form-inline">
                     {{ csrf_field() }}
+
                     <div class="form-group">
                         <label class="sr-only" for="city">City</label>
-                        <input name="city" type="text" class="form-control autocomplete" id="city" placeholder="City">
+                        <input name="city" value="{{ old('city') /* Lecture 19 */ }}" type="text" class="form-control autocomplete" id="city" placeholder="City">
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="day_in">Check in</label>
-                        <input name="check_in" type="text" class="form-control datepicker" id="check_in" placeholder="Check in">
+                        <input name="check_in" value="{{ old('check_in') /* Lecture 19 */ }}" type="text" class="form-control datepicker" id="check_in" placeholder="Check in">
                     </div>
 
                     <div class="form-group">
                         <label class="sr-only" for="day_out">Check out</label>
-                        <input name="check_out" type="text" class="form-control datepicker" id="check_out" placeholder="Check out">
+                        <input name="check_out" value="{{ old('check_out') /* Lecture 19 */ }}" type="text" class="form-control datepicker" id="check_out" placeholder="Check out">
                     </div>
                     <div class="form-group">
                         <select name="room_size" class="form-control">
                             <option>Room size</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                            
+                            <!-- Lecture 19 -->
+                            @for($i=1;$i<=5;$i++)
+                                @if( old('room_size') == $i )
+                                <option selected value="{{$i}}">{{$i}}</option>
+                                @else
+                                <option value="{{$i}}">{{$i}}</option>
+                                @endif
+                            @endfor
+                            
                         </select>
                     </div>
                     <button type="submit" class="btn btn-warning">Search</button>
-                    <input type="hidden" name="view" value="roomsearch">
+                   
                 </form>
+
+                
 
             </div>
         </div>
